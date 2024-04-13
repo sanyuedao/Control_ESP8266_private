@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ESP8266 Control</title>
+    <style>
+        .button-container {
+            text-align: center; 
+            margin-top: 50px;
+        }
+        .button-container button {
+            font-size: 1.2em; 
+            padding: 20px 40px; 
+            margin: 10px; 
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center">ESP8266 Control</h1>
+    <div class="button-container">
+        <button onclick="sendControl('on');">Turn On</button>
+        <button onclick="sendControl('off');">Turn Off</button>
+        <button onclick="sendControl('light_50');">50%</button>
+        <button onclick="sendControl('light_70');">70%</button>
+    </div>
+
+    <script>
+        function sendControl(action) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/control?action=' + action, true);
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
